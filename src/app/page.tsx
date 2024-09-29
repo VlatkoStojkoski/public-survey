@@ -1,5 +1,6 @@
 import { BrandIcon } from "@/components/illustrations/brand-icon";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -20,8 +21,8 @@ export default function Home() {
 
           <div className="flex flex-row gap-x-3">
             <Button asChild>
-              <Link href="/#survey">
-                Пополни анкета
+              <Link href="/survey" className="flex flex-row gap-x-2 items-center">
+                Пополни прашалник<ArrowRight className="size-5" />
               </Link>
             </Button>
           </div>

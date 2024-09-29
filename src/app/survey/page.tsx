@@ -12,6 +12,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RatingInputField } from "./rating-field";
 import { Textarea } from "@/components/ui/textarea";
 import { SupplementalQuestions } from "./supplemental-questions";
+import { sendFormResponse } from "@/lib/google-forms";
+import { useState } from "react";
+import { RefreshCwIcon } from "lucide-react";
 
 export default function SurveyPage() {
 	return (
@@ -36,15 +39,34 @@ function SurveyForm() {
 		},
 	});
 
-	console.log(form.formState.errors)
+	const [isLoading, setIsLoading] = useState(false);
 
 	function onSubmit(data: z.infer<typeof surveySchema>) {
-		console.log(data);
+		setIsLoading(true);
+		sendFormResponse(data).finally(() => {
+			setIsLoading(false);
+		});
 	}
 
 	return (
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-y-6 w-full max-w-screen-lg px-3">
+				<h1 className="text-center text-balance font-bold text-xl sm:text-2xl">Анкетен прашалник за креирање на Буџетот на Општина Ѓорче Петров за 2024 година</h1>
+
+				<FormField
+					control={form.control}
+					name="fullName"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Име и презиме</FormLabel>
+							<FormControl>
+								<Input type="text" placeholder="Име Презиме" className="max-w-[30ch]" {...field} />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+
 				<FormField
 					control={form.control}
 					name="email"
@@ -125,9 +147,14 @@ function SurveyForm() {
 					)}
 				/>
 
+				<h2 className="text-xl font-bold mt-6">Дополнителни прашања</h2>
+
 				<SupplementalQuestions />
 
-				<Button className="w-[30ch] mx-auto" type="submit">Испрати</Button>
+				<Button className="w-[30ch] mx-auto" type="submit" disabled={isLoading}>
+					{isLoading && <RefreshCwIcon className="animate-spin inline-block w-4 h-4 mr-2" />}
+					Испрати
+				</Button>
 			</form>
 		</Form>
 	)

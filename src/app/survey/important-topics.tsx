@@ -9,7 +9,7 @@ export function ImportantTopicsSelect() {
 	const form = useFormContext();
 
 	return (
-		<>
+		<div className="space-y-2">
 			<h3 className="text-sm">Според Вашето мислење, на кои области треба Општина Ѓорче Петров да го стави фокусот во 2024 година?</h3>
 			<div className="grid grid-cols-2 lg:grid-cols-3 w-full max-w-screen-lg gap-2">
 				{
@@ -40,6 +40,6 @@ export function ImportantTopicsSelect() {
 					))
 				}
 			</div>
-		</>
+		</div>
 	);
 }

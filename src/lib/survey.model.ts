@@ -42,11 +42,41 @@ const supplementalIssueQuestionsAnswers = z.object(
 );
 
 export const surveySchema = z.object({
-	email: z.string().email(),
+	fullName: z.string({
+		invalid_type_error: 'Полето за име и презиме мора да содржи текст',
+		required_error: 'Полето за име и презиме е задолжително',
+	}).min(1, {
+		message: 'Полето за име и презиме е задолжително',
+	}),
+	email: z.string({
+		invalid_type_error: 'Внесете валидна е-пошта',
+		required_error: 'Полето за е-пошта е задолжително',
+	}).email({
+		message: 'Внесете валидна е-пошта',
+	}),
 	gender: z.enum(['male', 'female']),
-	age: z.number().int().min(0).max(120),
+	age: z.number({
+		invalid_type_error: 'Возраста мора да биде цел број',
+		required_error: 'Полето за возраст е задолжително',
+	}).int().min(0, {
+		message: 'Возраста мора да биде цел број поголем од 0',
+	}).max(120, {
+		message: 'Возраста мора да биде цел број помал од 120',
+	}),
 	importantTopics: issueTopicsChecked,
 	supplementalAnswers: supplementalIssueQuestionsAnswers,
-	reviewRating: z.number().int().min(1).max(5),
-	reviewComment: z.string().min(1),
+	reviewRating: z.number({
+		invalid_type_error: 'Оцената мора да има од 1 до 5 звезди',
+		required_error: 'Полето за оценка е задолжително',
+	}).int().min(1, {
+		message: 'Оценката мора да содржи најмалку една звезда',
+	}).max(5, {
+		message: 'Оценката мора да содржи најмногу пет звезди',
+	}),
+	reviewComment: z.string({
+		invalid_type_error: 'Коментарот мора да содржи текст',
+		required_error: 'Полето за коментар е задолжително',
+	}).min(1, {
+		message: 'Полето за коментар е задолжително',
+	}),
 });

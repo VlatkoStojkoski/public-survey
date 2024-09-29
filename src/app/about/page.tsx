@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function AboutPage() {
 	return (
-		<div className="mx-auto py-[calc(theme(spacing.navbar)+theme(spacing.6))] flex flex-col gap-y-6 items-center justify-center">
+		<div className="w-full h-full mx-auto px-6 py-[calc(theme(spacing.navbar)+theme(spacing.6))] flex flex-col gap-y-6 items-center justify-center">
 			<main className="prose mx-auto prose-invert">
 				<h1>Анкетен прашалник за креирање на Буџетот на Општина Ѓорче Петров за 2024 годинa</h1>
 
@@ -27,7 +27,6 @@ export default function AboutPage() {
 				</p>
 
 				<p>Ви благодариме!</p>
-
 			</main >
 
 			<Button size='lg' asChild>
