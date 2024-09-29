@@ -22,7 +22,7 @@ export default function SurveyPage() {
 	)
 }
 
-export function SurveyForm() {
+function SurveyForm() {
 	const form = useForm<z.infer<typeof surveySchema>>({
 		resolver: zodResolver(surveySchema),
 		defaultValues: {
