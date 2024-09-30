@@ -15,7 +15,7 @@ export default function Home() {
           <div className="flex flex-col gap-y-1 items-center">
             <h1 className="text-2xl sm:text-3xl font-bold text-balance">Создади ја иднината на Ѓорче Петров!</h1>
             <p className="text-sm sm:text-base max-w-[40ch] text-balance font-semibold">
-              Вклучи се во изготвувањето на Буџетот за 2024 година и помогни да ја подобриме нашата заедница. Твоето мислење е важно!
+              Вклучи се во изготвувањето на Буџетот за 2025 година и помогни да ја подобриме нашата заедница. Твоето мислење е важно!
             </p>
           </div>
 

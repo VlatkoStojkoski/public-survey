@@ -51,7 +51,7 @@ function SurveyForm() {
 	return (
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-y-6 w-full max-w-screen-lg px-3">
-				<h1 className="text-center text-balance font-bold text-xl sm:text-2xl">Анкетен прашалник за креирање на Буџетот на Општина Ѓорче Петров за 2024 година</h1>
+				<h1 className="text-center text-balance font-bold text-xl sm:text-2xl">Анкетен прашалник за креирање на Буџетот на Општина Ѓорче Петров за 2025 година</h1>
 
 				<FormField
 					control={form.control}
